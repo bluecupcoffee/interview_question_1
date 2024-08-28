@@ -4,20 +4,26 @@ fn main() {
 
     // Define a vector of ranges
 
-    let ranges = vec![[9, 18], [2, 6], [8, 10], [1, 3]];
+    let ranges = vec![[15, 18], [2, 6], [8, 10], [1, 3]];
+    let ranges2 = vec![[1, 4], [4, 5]];
+    let ranges3 = vec![[1, 5], [2, 3], [4, 8], [9, 10], [9, 12]];
 
 
     // Call merge_ranges function with the ranges
 
     let merged = merge_ranges(ranges);
+    let merged2 = merge_ranges(ranges2);
+    let merged3 = merge_ranges(ranges3);
 
 
     println!("Output: {:?}", merged);
-
-
-    //Output: [[1, 3], [2, 6], [8, 10], [15, 18]]
-
     // expected output [1,6], [8,10], [15,18]
+
+    println!("Output: {:?}", merged2);
+    // expected output `[[1, 5]]`
+
+    println!("Output: {:?}", merged3);
+    // expected output `[[1, 8], [9, 12]]`
 }
 
 fn merge_ranges(mut v: Vec<[i32;2]>) -> Vec<[i32;2]> {
@@ -44,7 +50,9 @@ fn merge_ranges(mut v: Vec<[i32;2]>) -> Vec<[i32;2]> {
 
             } else {
                 broken = false;
-                temp_arr[1] = v[i+1][1];
+                if temp_arr[1] < v[i+1][1] {
+                    temp_arr[1] = v[i+1][1];
+                }
             }
         } else {
             v2.push(temp_arr.clone());
