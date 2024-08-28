@@ -25,3 +25,5 @@ This most likely isn't the most elegant solution, but it is the completion of wh
 I ended up actually using a lot of what I had thrown out while my mind was just running through ideas as fast as possible. Prior to posting this solution, the unfinished solution had no broken check for starting a new range. It also did not have the 2-element temp array.
 
 Granted, my unfinished solution *did* have these in some iterations, but I was rushing too fast to properly set down the logic. My issue was that my initial algorithm description was a bit too high in its level of description and then I tried to stick as close to it as possible. Now that I don't have the pressure of a test over me, I've refined it. You can see both at the bottom of the **merge_ranges** function in the main.rs file.
+
+My goal isn't to provide the best solution as that would require other constraints and rules to satisfy. This is simply *a* solution. I was not able to show a working solution during an interview and I wanted to see it through.
