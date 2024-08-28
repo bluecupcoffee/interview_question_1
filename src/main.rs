@@ -39,28 +39,34 @@ fn merge_ranges(mut v: Vec<[i32;2]>) -> Vec<[i32;2]> {
 
     while i < v.len() {
         // establish new lower and upper bounds
+        // if broken then establish new bounds for the range
         if broken {
             temp_arr[0] = v[i][0];
             temp_arr[1] = v[i][1];
         }
+        // check if there is a next element to compare against
         if i + 1 < v.len() {
+            // compare current range against next element
+            // if next element is greater, then the range is broken
             if v[i+1][0] > temp_arr[1] {
                 broken = true;
                 v2.push(temp_arr.clone());
 
             } else {
+                // otherwise the range is not broken
                 broken = false;
+                // if the temp upper range is lower than the next element's upper range
+                // assign the next element's upper range to the temp upper range
                 if temp_arr[1] < v[i+1][1] {
                     temp_arr[1] = v[i+1][1];
                 }
             }
+        // if there is no next element, push what is currently on the temp array
         } else {
             v2.push(temp_arr.clone());
         }
-
-
+        // increment to get next range
         i = i + 1;
-
 
     }
 
